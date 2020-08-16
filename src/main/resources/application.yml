@@ -1,0 +1,17 @@
+server:
+  port: 8088
+# DataSource Config
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver          # mysql驱动包，高版本兼容低版本驱动
+    url: jdbc:mysql://192.168.33.102:13306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+  application:
+    name: MybatisPlusDemo
+
+# Logger Config
+logging:
+  level:
+    com.learn.demo.mapper: debug
