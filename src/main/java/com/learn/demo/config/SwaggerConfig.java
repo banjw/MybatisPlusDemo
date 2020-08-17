@@ -2,6 +2,7 @@ package com.learn.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 import springfox.documentation.builders.PathSelectors;
@@ -22,15 +23,15 @@ public class SwaggerConfig {
 
     //Swagger分组就需要建立多个Docker实例
     @Bean
+    //方式一通过注解判断是否是开发环境，如果是开发环境才启用swagger
+    @Profile({"dev","test"})
     public Docket docket(Environment environment){
-        //判断是否是开发环境，如果是开发环境才启用swagger
-        boolean flag = environment.acceptsProfiles(Profiles.of("dev"));
-        return new Docket(DocumentationType.SWAGGER_2).groupName("default").enable(flag);
+        return new Docket(DocumentationType.SWAGGER_2).groupName("default");
     }
 
     @Bean
     public Docket docketBan(Environment environment){
-        //判断是否是开发环境，如果是开发环境才启用swagger
+        //方式二，通过org.springframework.core.env.Environment判断是否是开发环境，如果是开发环境才启用swagger
         boolean flag = environment.acceptsProfiles(Profiles.of("dev"));
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(this.apiInfo())
