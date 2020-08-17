@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8099
 # DataSource Config
 spring:
   datasource:
@@ -10,8 +10,6 @@ spring:
     password: 123456
   application:
     name: MybatisPlusDemo
-  profiles:
-    active: dev
 
 # Logger Config
 logging:
