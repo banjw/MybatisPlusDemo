@@ -33,6 +33,8 @@ public class User implements Serializable {
     private Integer sex;
 
     @ApiModelProperty(value = "状态")
+    //逻辑删除注解
+    @TableLogic
     private Integer status;
 
     //自动填充，必须要自己写一个handler实现MetaObjectHandler接口
